@@ -38,16 +38,18 @@
 
 
         /* Card */
-        .wrap{
-          width:980px;
-          max-width:100%;
-          background: linear-gradient(180deg, rgba(255,255,255,0.85), #fff);
-          border-radius:20px;
-          padding:22px;
-          box-shadow:var(--card-shadow);
-          overflow:hidden;
-          border:1px solid rgba(255,26,140,0.06);
-        }
+       .wrap {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto; /* center on larger screens */
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), #fff);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  border: 1px solid rgba(255,26,140,0.06);
+}
+
 
         .lock-screen{
           display:flex;
@@ -109,12 +111,12 @@
         .lock-info{flex:1;min-width:280px}
         .title{
           margin:0 0 8px;
-          font-size:20px;
+          font-size: clamp(16px, 2vw, 24px);
           color:var(--hot);
           font-weight:800;
           letter-spacing:0.2px;
         }
-        .lead{margin:0 0 16px;color:var(--muted);font-size:15px;line-height:1.35}
+        .lead{margin:0 0 16px;color:var(--muted);font-size: clamp(12px, 1.5vw, 16px);line-height:1.35}
 
         .code-row{display:flex;gap:10px;align-items:center}
         .code{font-size:18px;padding:10px 14px;border-radius:12px;border:2px solid rgba(255,26,140,0.12);width:200px;outline:none;background:transparent}
@@ -147,14 +149,18 @@
         }
         .card:hover{transform:translateY(-8px);box-shadow:0 18px 42px rgba(255,26,140,0.12)}
         .icon-wrap{width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,var(--accent-lite),transparent);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -4px 12px rgba(255,26,140,0.02)}
-        .card h3{margin:0;font-size:15px;color:#4b1b30;font-weight:700}
-        .card p{margin:0;font-size:13px;color:#8a5a73}
+        .card h3{margin:0;font-size: clamp(13px, 1.2vw, 15px);color:#4b1b30;font-weight:700}
+        .card p{margin:0; font-size: clamp(11px, 1vw, 13px); color:#8a5a73}
 
         footer{margin-top:18px;font-size:13px;color:#a35b73;text-align:center}
 
         /* Modal */
-        .modal{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
-        .paper{background:white;border-radius:12px;padding:18px;max-width:820px;width:100%;box-shadow:0 18px 50px rgba(0,0,0,0.25)}
+        .modal{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:none;align-items:center;overflow-y: auto;justify-content:center;padding:20px;z-index:60}
+        .paper{background:white;width: 100%;
+  max-width: 820px;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.25); 18px 50px rgba(0,0,0,0.25)}
         .close{float:right;background:none;border:0;font-size:18px;cursor:pointer}
         .letters{max-height:420px;overflow:auto;padding-right:6px}
         .small{font-size:13px;color:#7a4960}
@@ -166,7 +172,12 @@
         @media(max-width:760px){
           .lock-screen{flex-direction:column;align-items:flex-start}
           .greeting{flex-direction:column;align-items:flex-start}
-          .pixel-cat { transform:scale(0.85) }
+           .pixel-cat { transform:scale(0.85); }
+           .pixel-cat-wrap img {
+  max-width: 100%;
+  height: auto;
+}
+
         }
 
         /* Simple pixel icons (keep pixel aesthetic) */
@@ -462,8 +473,8 @@ I promise, no matter what, I am yours and you are mine. Forever.`
         <button class="close" onclick="closeModal('galleryModal')">✖</button>
         <h3>Gallery</h3>
         <p class="small">You and me, in every frame, in every lifetime.</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px">
-            <img src="p1.jpg" alt="Photo 1" />
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-top:10px">
+            <img src="p1.jpg" alt="Photo 1" style="width:100%;height:auto;object-fit:cover" />
         </div>
     </div>
 </div>
